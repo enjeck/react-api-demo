@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Blog API favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bg)"/>
+  <path d="M22 18h20a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4Z" fill="#f8fafc"/>
+  <rect x="24" y="24" width="16" height="4" rx="2" fill="#1d4ed8"/>
+  <rect x="24" y="31" width="12" height="3" rx="1.5" fill="#64748b"/>
+  <rect x="24" y="37" width="10" height="3" rx="1.5" fill="#64748b"/>
+  <circle cx="44" cy="42" r="7" fill="#f59e0b"/>
+  <path d="M42 42.5l1.6 1.6 2.9-3" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
