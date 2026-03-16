@@ -1,15 +1,17 @@
 import { useState, useCallback } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import type { BlogPost } from './types/blog';
-import { useBlogPosts } from './hooks/useBlogPosts';
+import { BlogProvider, useBlogContext } from './hooks/BlogContext';
 import { useSearch } from './hooks/useSearch';
 import { usePagination } from './hooks/usePagination';
 import { PostList } from './components/PostList';
 import { Pagination } from './components/Pagination';
 import { CreatePostForm } from './components/CreatePostForm';
 import { Modal } from './components/Modal';
+import { PostDetail } from './components/PostDetail';
 import './App.css';
 
-export default function App() {
+function PostsPage() {
   const {
     posts,
     loading,
@@ -21,7 +23,7 @@ export default function App() {
     clearActionError,
     createPost,
     removePost,
-  } = useBlogPosts();
+  } = useBlogContext();
   const { query, setQuery, sortDir, toggleSort, filtered } = useSearch(posts);
   const [page, setPage] = useState(1);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -128,7 +130,7 @@ export default function App() {
   }
 
   return (
-    <div className="app-container">
+    <>
       <header className="app-header">
         <h1 className="app-title">Blog</h1>
         <button className="open-create-modal" onClick={openCreateModal}>
@@ -199,6 +201,19 @@ export default function App() {
           </div>
         </Modal>
       )}
-    </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BlogProvider>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<PostsPage />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+        </Routes>
+      </div>
+    </BlogProvider>
   );
 }

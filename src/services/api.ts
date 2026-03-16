@@ -41,6 +41,17 @@ export async function createBlogPost(input: CreateBlogPostInput): Promise<BlogPo
   return normalizePost(data, input);
 }
 
+export async function fetchBlogPost(id: number): Promise<BlogPost> {
+  const response = await fetch(`${API_URL}/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`API request failed with status ${response.status}`);
+  }
+
+  const data: Partial<BlogPost> = await response.json();
+  return normalizePost(data);
+}
+
 export async function deleteBlogPost(id: number): Promise<void> {
   const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
 

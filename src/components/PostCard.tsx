@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { BlogPost } from '../types/blog';
 
 interface PostCardProps {
@@ -45,7 +46,9 @@ export function PostCard({ post, deleting, onRequestDelete }: PostCardProps) {
           )}
         </button>
       </div>
-      <h2 className="post-title">{post.title}</h2>
+      <h2 className="post-title">
+        <Link to={`/posts/${post.id}`} className="post-title-link">{post.title}</Link>
+      </h2>
       <p className="post-content">{post.content}</p>
     </article>
   );
